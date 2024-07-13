@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-13T15:38:07 CDT" name="Suite" finished-at="2024-07-13T15:39:58 CDT" duration-ms="110160">
+    <groups>
+    </groups>
+    <test started-at="2024-07-13T15:38:07 CDT" name="Test" finished-at="2024-07-13T15:39:58 CDT" duration-ms="110160">
+      <class name="com.test.WebElementList">
+        <test-method is-config="true" signature="Initalization()[pri:0, instance:com.test.WebElementList@12365bd8]" started-at="2024-07-13T15:38:07 CDT" name="Initalization" finished-at="2024-07-13T15:38:14 CDT" duration-ms="6883" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Initalization -->
+        <test-method signature="MouseHovering()[pri:1, instance:com.test.WebElementList@12365bd8]" started-at="2024-07-13T15:38:14 CDT" name="MouseHovering" finished-at="2024-07-13T15:38:17 CDT" duration-ms="2331" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- MouseHovering -->
+        <test-method signature="DropDown()[pri:2, instance:com.test.WebElementList@12365bd8]" started-at="2024-07-13T15:38:17 CDT" name="DropDown" finished-at="2024-07-13T15:38:17 CDT" duration-ms="586" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DropDown -->
+        <test-method is-config="true" signature="cleanUp()[pri:0, instance:com.test.WebElementList@12365bd8]" started-at="2024-07-13T15:38:17 CDT" name="cleanUp" finished-at="2024-07-13T15:38:17 CDT" duration-ms="228" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanUp -->
+      </class> <!-- com.test.WebElementList -->
+      <class name="Excersises.MAPS1">
+        <test-method is-config="true" signature="initialization()[pri:0, instance:Excersises.MAPS1@3e2d44f3]" started-at="2024-07-13T15:38:17 CDT" name="initialization" finished-at="2024-07-13T15:38:41 CDT" duration-ms="23264" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialization -->
+        <test-method signature="test2087()[pri:0, instance:Excersises.MAPS1@3e2d44f3]" started-at="2024-07-13T15:38:41 CDT" name="test2087" finished-at="2024-07-13T15:39:58 CDT" duration-ms="76830" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2087 -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:Excersises.MAPS1@3e2d44f3]" started-at="2024-07-13T15:39:58 CDT" name="cleanup" finished-at="2024-07-13T15:39:58 CDT" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+      </class> <!-- Excersises.MAPS1 -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
