@@ -1,5 +1,9 @@
 package Excersises;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,30 +19,37 @@ import org.testng.annotations.Test;
 public class MAPS1 {
 
 	WebDriver driver;
+	Properties prop;
 
 	@BeforeClass
-	public void initialization() throws InterruptedException {
+	public void initialization() throws InterruptedException, IOException {
 		driver = new ChromeDriver();
+		
+		FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "\\Properties\\Config.properties");
+		
+		prop = new Properties();
+		
+		prop.load(fis);
 
-		driver.get("https://mapsdvalid.pace.medtronic.com/");
+		driver.get(prop.getProperty("MAPS_Dvalid"));
 		driver.manage().window().maximize();
 
 		Thread.sleep(3000);
 
-		WebElement username = driver.findElement(By.id("gwt-uid-2"));
-		username.sendKeys("ylvisc1");
-		WebElement password = driver.findElement(By.xpath("//input[@class='gwt-PasswordTextBox']"));
-		password.sendKeys("xrccd59");
-		driver.findElement(By.xpath("//button[text()='Submit']")).click();
+		WebElement username = driver.findElement(By.id(prop.getProperty("UserName_URL")));
+		username.sendKeys(prop.getProperty("username"));
+		WebElement password = driver.findElement(By.xpath(prop.getProperty("Password_URL")));
+		password.sendKeys(prop.getProperty("password"));
+		driver.findElement(By.xpath(prop.getProperty("submit"))).click();
 		System.out.println(driver.getTitle());
 
 		Thread.sleep(15000);
 
 		// Select Business Group
-		WebElement openAccountPanel = driver.findElement(By.id("Open account panel"));
+		WebElement openAccountPanel = driver.findElement(By.id(prop.getProperty("openAccountPanel")));
 		openAccountPanel.isEnabled();
 		openAccountPanel.click();
-		WebElement businessGroup = driver.findElement(By.xpath("(//select[@class='gwt-ListBox browser-default'])[1]"));
+		WebElement businessGroup = driver.findElement(By.xpath(prop.getProperty("businessGroup")));
 
 		Select select = new Select(businessGroup);
 		select.selectByIndex(0);
@@ -49,36 +60,36 @@ public class MAPS1 {
 	@Test
 	public void test2087() throws InterruptedException {
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("//div[@id='Open search panel']")).click();
+		driver.findElement(By.xpath(prop.getProperty("searchpanel"))).click();
 
-		WebElement searchType = driver.findElement(By.xpath("(//select[@class='gwt-ListBox browser-default'])[1]"));
+		WebElement searchType = driver.findElement(By.xpath(prop.getProperty("searchType")));
 		Select searchTypeSelect = new Select(searchType);
 		Thread.sleep(5000);
 		searchTypeSelect.selectByIndex(2);
 
 		// add Filters
 		Thread.sleep(5000);
-		driver.findElement(By.id("add_filter")).click();
+		driver.findElement(By.id(prop.getProperty("add_filter"))).click();
 
 		// Add Color Option and Operating Unit Filter
-		WebElement colorOption = driver.findElement(By.xpath("//tr[td[div[div[text()='Color option']]]]//label"));
+		WebElement colorOption = driver.findElement(By.xpath(prop.getProperty("colorOption")));
 		colorOption.click();
 
 		Thread.sleep(5000);
-		WebElement operatingUnit = driver.findElement(By.xpath("//tr[td[div[div[text()='Operating unit']]]]//label"));
+		WebElement operatingUnit = driver.findElement(By.xpath(prop.getProperty("operatingUnit")));
 		operatingUnit.click();
 
-		driver.findElement(By.xpath("//span[text()='Add']")).click();
+		driver.findElement(By.xpath(prop.getProperty("add"))).click();
 
 		//
-		WebElement colorFilter = driver.findElement(By.xpath("(//select[@class='gwt-ListBox browser-default'])[3]"));
+		WebElement colorFilter = driver.findElement(By.xpath(prop.getProperty("colorFilter")));
 
 		Thread.sleep(3000);
 		Select sel1 = new Select(colorFilter);
 		sel1.selectByValue("2");
 
 		WebElement operatingUnitFilter = driver
-				.findElement(By.xpath("(//select[@class='gwt-ListBox browser-default'])[5]"));
+				.findElement(By.xpath(prop.getProperty("operatingUnitFilter")));
 
 		Select sel2 = new Select(operatingUnitFilter);
 		Thread.sleep(5000);
@@ -86,84 +97,84 @@ public class MAPS1 {
 
 		// Click search
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//span[text()='Search']")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_search"))).click();
 
 		Thread.sleep(7000);
 
 		// Click Select Columns
-		driver.findElement(By.xpath("(//i[@id='Column Selector'])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("column_select"))).click();
 
 		// Click Select all Columns
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//th[@id='col0']//label")).click();
+		driver.findElement(By.xpath(prop.getProperty("select_all_columns"))).click();
 
 		// Click Select all Columns
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//th[@id='col0']//label")).click();
+		driver.findElement(By.xpath(prop.getProperty("select_all_columns"))).click();
 
 		// Select Color option column
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//div[text()='Color option']")).click();
+		driver.findElement(By.xpath(prop.getProperty("color_option_column"))).click();
 
-		// Select Color option column
+		// Select Operating Unit column
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//div[text()='Operating unit']")).click();
+		driver.findElement(By.xpath(prop.getProperty("operating_unit_column"))).click();
 
 		// Click ok
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//span[text()='OK']")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_ok"))).click();
 
 		// changed to wait 2000----------------------------------------------testing
 
 		// ========================test 1 =======================================
-		// Click on Color option column
+		// Sort on Color option column
 		Thread.sleep(5000);
-		driver.findElement(By.xpath("(//div[span[text()='Color option']])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("sort_color_option"))).click();
 
 		// Click on the first row
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[text()='color'])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_first_row"))).click();
 
 		// Click on the color meta data
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//span[text()='color']")).click();
+		driver.findElement(By.xpath(prop.getProperty("color_metadata"))).click();
 
-		// Click on Color option column
+		// Sort on Color option column
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[span[text()='Color option']])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("sort_color_option"))).click();
 
 		// Click on the first row
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[text()='color'])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_first_row"))).click();
 
 		// Click on the color meta data
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//span[text()='color']")).click();
+		driver.findElement(By.xpath(prop.getProperty("color_metadata"))).click();
 
 		// ========================test 2 =======================================
-		// Click on Operating Unit column
+		// Sort on Operating Unit column
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[span[text()='Operating unit']])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("sort_operating_unit"))).click();
 
 		// Click on the first row
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[text()='CAS'])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_first_row_CAS"))).click();
 
 		// Click on the CAS meta data
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//span[text()='CAS']")).click();
+		driver.findElement(By.xpath(prop.getProperty("CAS_metadata"))).click();
 
-		// Click on Operating Unit column
+		// Sort on Operating Unit column
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[span[text()='Operating unit']])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("sort_operating_unit"))).click();
 
 		// Click on the first row
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("(//div[text()='CAS'])[1]")).click();
+		driver.findElement(By.xpath(prop.getProperty("click_first_row_CAS"))).click();
 
 		// Click on the CAS meta data
 		Thread.sleep(2000);
-		driver.findElement(By.xpath("//span[text()='CAS']")).click();
+		driver.findElement(By.xpath(prop.getProperty("CAS_metadata"))).click();
 
 	}
 
