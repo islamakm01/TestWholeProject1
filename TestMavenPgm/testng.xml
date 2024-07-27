@@ -5,6 +5,7 @@
     <classes>
       <class name="com.test.WebElementList"/>
       <class name="Excersises.MAPS1"/>
+        <class name="com.ExcelData.ReadDataExcel"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
